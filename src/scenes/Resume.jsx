@@ -1,106 +1,243 @@
-import LineGradient from "../components/LineGradient";
-import { motion } from "framer-motion";
+import React from 'react';
+import {motion} from 'framer-motion';
+import useMediaQuery from '../hooks/useMediaQuery';
+import LineGradient from '../components/LineGradient';
+import VerticalGradient from '../components/VerticalGradient';
+
+const experiences = [
+    {
+        company: "Blue Cross and Blue Shield"
+,        duration: "September 2024 - Present",
+        role: "Software Engineering-Intern",
+        responsibilities: [
+            "Build and maintain scalable full-stack applications using Spring Boot and React.js to optimize healthcare claim workflows. ",
+            "Design and integrate secure RESTful APIs, ensuring seamless data exchange and HIPAA compliance.",
+            "Enhance frontend usability with React, Material UI, and responsive design principles. ",
+            "Apply Java design patterns and best practices to deliver clean, maintainable backend code. ",
+            "Leveraged AWS services such as EC2, S3, SQS, and CloudWatch to efficiently deploy and manage applications"
+        ]
+    }, {
+        company: "OpenText Technologies",
+        duration: "August 2021 – July 2023",
+        role: "Associate Software Engineer ",
+        responsibilities: [
+            "Developed key features like user entitlement and tenant subscription management using Java, Spring framework, and React. ",
+" Ensured seamless frontend-backend integration in a microservices architecture, optimizing response time by 30% ",
+" Leveraged Spring Data JPA with Hibernate to interact with a PostgreSQL, improving query performance by 40% ",
+" Utilized Kafka for message publishing and consumption within a microservices architecture, enabling inter-service communication.",
+" Automated tasks using Cron jobs, reducing manual intervention by 80% and ensuring timely execution ",
+" Documented and tested REST APIs with Swagger UI, cutting onboarding time for developers by 50%.", 
+" Containerized applications using Docker, reducing deployment time by 60%, and contributed to automated testing with JUnit, Selenium, and Mockito, increasing test coverage to 85%" ,
+" Strengthened application security using JSON Web Tokens (JWTs), preventing unauthorized access and improving authentication.", 
+"Collaborated in an Agile environment, delivering bi-weekly sprint goals with a 98% on-time completion rate. ",
+        ]
+    },
+
+    {
+      company: "OpenText Technologies",
+      duration: "June 2021 – August 2021",
+      role: "Software Development Intern",
+      responsibilities: [
+          "Worked on Appworks, an enterprise content management platform in a Hub-supplier model in SCM domain which helps in displaying business documents in an intelligent web-based environment. using BPM ",
+"Worked closely on developing and maintaining REST APIs and executed bug fixes and code enhancements to improve system efficiency and reliability. "
+      ]
+  }
+];
 
 const Resume = () => {
-  return (
-    <section id="resume" className="pt-32 pb-16">
-      {/* HEADING */}
-      <motion.div
-        className="md:w-1/3 text-center md:text-left"
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.5 }}
-        transition={{ duration: 0.5 }}
-        variants={{
-          hidden: { opacity: 0, x: -50 },
-          visible: { opacity: 1, x: 0 },
-        }}
-      >
-        <p className="font-playfair font-semibold text-4xl mb-5">
-        <span className="text-red">RE</span>SUME
+    const isAboveLarge = useMediaQuery("(min-width: 1060px)");
+    const [dialogContent,
+        setDialogContent] = React.useState(null);
+
+    const handleDialogOpen = (content) => {
+        setDialogContent(content);
+        const backdrop = document.querySelector(`[data-dialog-backdrop="animated-dialog"]`);
+        const dialog = document.querySelector(`[data-dialog="animated-dialog"]`);
+
+        if (backdrop && dialog) {
+            backdrop
+                .classList
+                .remove('pointer-events-none', 'opacity-0');
+            dialog
+                .classList
+                .remove('opacity-0', '-translate-y-28', 'scale-90', 'pointer-events-none');
+        }
+    };
+
+    const handleDialogClose = () => {
+        setDialogContent(null);
+        const backdrop = document.querySelector(`[data-dialog-backdrop="animated-dialog"]`);
+        const dialog = document.querySelector(`[data-dialog="animated-dialog"]`);
+
+        if (backdrop && dialog) {
+            backdrop
+                .classList
+                .add('pointer-events-none', 'opacity-0');
+            dialog
+                .classList
+                .add('opacity-0', '-translate-y-28', 'scale-90', 'pointer-events-none');
+        }
+    };
+
+    return (
+        <section id="experience" className="pt-10 pb-24">
+            {/* HEADER SECTION */}
+            <div className="text-center mt-10">
+                <motion.h1
+                    className="text-4xl font-semibold"
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{
+                    once: true,
+                    amount: 0.5
+                }}
+                    transition={{
+                    duration: 0.5
+                }}
+                    variants={{
+                    hidden: {
+                        opacity: 0,
+                        y: -50
+                    },
+                    visible: {
+                        opacity: 1,
+                        y: 0
+                    }
+                }}>
+                    <div>
+                        <p className="font-playfair font-semibold text-4xl">
+                            <span className="text-red">Re</span>
+                            sume
+                        </p>
+                        <div className="flex justify-center mt-5">
+                            <LineGradient width="w-1/3"/>
+                        </div>
+
+                    </div>
+                </motion.h1>
+            </div>
+            {/* EXPERIENCES */}
+            <div
+                className="flex flex-wrap justify-between gap-6 mt-16 mx-auto max-w-6xl px-6">
+                {experiences.map((experience, index) => (
+                    <motion.div
+                        key={index}
+                        className={`shadow-md rounded-lg p-6 flex flex-col items-start ${isAboveLarge
+                        ? 'w-[30%]'
+                        : 'w-full sm:w-48'}`}
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{
+                        once: true,
+                        amount: 0.5
+                    }}
+                        transition={{
+                        duration: 0.5
+                    }}
+                        variants={{
+                        hidden: {
+                            opacity: 0,
+                            y: 50
+                        },
+                        visible: {
+                            opacity: 1,
+                            y: 0
+                        }
+                    }}>
+                        <div className="w-full flex">
+                            <VerticalGradient height="h-auto"/>
+                            <div className="ml-2">
+                                <h2 className="font-playfair text-2xl font-bold">{experience.company}</h2>
+                                <p className="font-playfair text-lg font-medium opacity-80 whitespace-nowrap overflow-hidden text-ellipsis">
+            {experience.role}
         </p>
-        <LineGradient width="w-2/3" />
-        <p className="mt-10 mb-5">
-          Here is my resume which includes my work experience, education.Click <b>View Resume</b> to navigate to my resume .
-        </p>
-      </motion.div>
+                                <p className="font-playfair text-lg font-medium opacity-80">{experience.duration}</p>
+                            </div>
+                        </div>
 
-      {/* TESTIMONIALS */}
-      <div className="flex flex-wrap justify-between gap-8">
-  {/* Education Section */}
-  <motion.div
-    className="relative bg-blue flex-1 min-h-[350px] flex flex-col justify-end p-8 md:p-16"
+                        <button
+                            onClick={() => handleDialogOpen(experience.responsibilities)}
+                            className=" text-left mt-4  text-gradient bg-gradient-rainblue pl-2 font-semibold flex items-center gap-2 transition duration-500 cursor-pointer hover:scale-105">
+                            Responsibility
+                            <span className="inline-flex items-center">
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 24 24"
+                                    className="w-5 h-5 fill-current">
+                                    <path
+                                        fill="currentColor"
+                                        d="M17.92,11.62a1,1,0,0,0-.21-.33l-5-5a1,1,0,0,0-1.42,1.42L14.59,11H7a1,1,0,0,0,0,2h7.59l-3.3,3.29a1,1,0,0,0,0,1.42,1,1,0,0,0,1.42,0l5-5a1,1,0,0,0,.21-.33A1,1,0,0,0,17.92,11.62Z"/>
+                                </svg>
+                            </span>
+                        </button>
+                    </motion.div>
+                ))}
+            </div>
+            {/* EDUCATION SECTION */}
+<div className="mt-20 text-center">
+  <motion.h2
+    className="text-3xl font-semibold mb-4"
     initial="hidden"
     whileInView="visible"
     viewport={{ once: true, amount: 0.5 }}
-    transition={{ duration: 0.6 }}
+    transition={{ duration: 0.5 }}
     variants={{
-      hidden: { opacity: 0, scale: 0.8 },
-      visible: { opacity: 1, scale: 1 },
+      hidden: { opacity: 0, y: -50 },
+      visible: { opacity: 1, y: 0 }
     }}
   >
-    <p className="font-playfair text-3xl text-center mb-4">Education</p>
-    <div className="text-center text-lg">
-      <p className="font-bold">Master's in Computer Science</p>
-      <p className="font-playfair">University of Central Missouri</p>
-      <p className="text-sm">GPA: 3.6/4.0</p>
-      <p className="mt-4 font-bold">Bachelor's in Computer Science</p>
-      <p className="font-playfair">Keshav Memorial Institute of Technology</p>
-      <p className="text-sm">GPA: 3.5/4.0</p>
-    </div>
-  </motion.div>
-
-  {/* Work Experience Section */}
-  <motion.div
-    className="relative bg-red flex-1 min-h-[350px] flex flex-col justify-end p-8 md:p-16"
-    initial="hidden"
-    whileInView="visible"
-    viewport={{ once: true, amount: 0.5 }}
-    transition={{ delay: 0.2, duration: 0.6 }}
-    variants={{
-      hidden: { opacity: 0, scale: 0.8 },
-      visible: { opacity: 1, scale: 1 },
-    }}
-  >
-    <p className="font-playfair text-3xl text-center mb-4">Work Experience</p>
-    <div className="text-center text-lg">
-      <p className="font-bold">Opentext Technologies</p>
-      <p className="font-playfair">Associate Software Engineer</p>
-      <p className="text-sm">(August 2021 - July 2023)</p>
-      <p className="mt-4 font-bold">Opentext Technologies</p>
-      <p className="font-playfair">Internship</p>
-      <p className="text-sm">(June-2021-August-2021)</p>
-    </div>
-  </motion.div>
-
-  {/* Resume Section */}
-  <motion.div
-    className="relative bg-dark-grey flex-1 min-h-[350px] flex flex-col justify-end p-8 md:p-16"
-    initial="hidden"
-    whileInView="visible"
-    viewport={{ once: true, amount: 0.5 }}
-    transition={{ delay: 0.4, duration: 0.6 }}
-    variants={{
-      hidden: { opacity: 0, scale: 0.8 },
-      visible: { opacity: 1, scale: 1 },
-    }}
-  >
-    <p className="font-playfair text-xl text-center mb-4">
-      Click below to view or download my detailed resume, showcasing my professional journey and accomplishments.
-    </p>
-    <a
-      className="bg-gradient-rainblue text-deep-blue rounded-sm py-3 px-20 font-semibold hover:bg-blue hover:text-white transition duration-500 text-center mx-auto"
-      href="https://drive.google.com/file/d/1iIWjbiniD9vHUdONw8a_BDE6MPWQdM9b/view?usp=sharing"
-      target="_blank"
-      rel="noreferrer"
-    >
-      View Resume
-    </a>
-  </motion.div>
+    <span className="font-playfair text-2xl font-bold">EDUCATION</span>
+  </motion.h2>
+  <p className="font-playfair text-lg">
+    Master’s in Computer Science – University of Central Missouri
+  </p>
 </div>
 
-    </section>
-  );
+{/* VIEW RESUME BUTTON */}
+<div className="mt-10 text-center">
+  <a
+    className="bg-white text-deep-blue rounded-sm py-3 px-10 font-semibold hover:bg-blue hover:text-white transition duration-500 text-center"
+    href="https://drive.google.com/file/d/1ch3p4qArrm35UEZObS5C7di6tpI5NHu0/view?usp=sharing"
+    target="_blank"
+    rel="noreferrer"
+  >
+    View Resume
+  </a>
+</div>
+
+
+            {/* DIALOG */}
+            <div
+                data-dialog-backdrop="animated-dialog"
+                onClick={handleDialogClose}
+                className="pointer-events-none fixed inset-0 z-[999] grid h-screen w-screen place-items-center bg-black bg-opacity-60 opacity-0 backdrop-blur-sm transition-opacity duration-300">
+                <div
+                    data-dialog="animated-dialog"
+                    className="relative m-4 p-4 w-full max-w-[90%] sm:max-w-[70%] md:max-w-[50%] rounded-lg bg-deep-blue shadow-sm opacity-0 -translate-y-28 scale-90 pointer-events-none transition-all duration-300">
+                    <div
+                        className="flex shrink-0 items-center pb-4 text-xl font-playfair font-semibold ">
+                        Responsibilities
+                    </div>
+                    <LineGradient/>
+                    <div className="relative  py-4 leading-normal font-playfair ">
+                        <ul className="list-disc ml-5">
+                            {dialogContent
+                                ?.map((resp, idx) => (
+                                    <li key={idx}>{resp}</li>
+                                ))}
+                        </ul>
+                    </div>
+                    <div className="flex shrink-0 flex-wrap items-center pt-4 justify-end">
+                        <button
+                            onClick={handleDialogClose}
+                            className="rounded-md border border-transparent py-2 px-4 text-center text-sm transition-all hover:bg-yellow focus:bg-yellow active:bg-yellow">
+                            Close
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    );
 };
 
 export default Resume;
