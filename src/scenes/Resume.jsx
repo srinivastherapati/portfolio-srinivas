@@ -199,7 +199,7 @@ const Resume = () => {
 <div className="mt-10 text-center">
   <a
     className="bg-white text-deep-blue rounded-sm py-3 px-10 font-semibold hover:bg-blue hover:text-white transition duration-500 text-center"
-    href="https://drive.google.com/file/d/1ch3p4qArrm35UEZObS5C7di6tpI5NHu0/view?usp=sharing"
+    href="https://drive.google.com/file/d/14D9UgV1A8H7OB-DQNcKGYv3_MoC9qHBB/view?usp=sharing"
     target="_blank"
     rel="noreferrer"
   >
