@@ -5,18 +5,20 @@ import LineGradient from '../components/LineGradient';
 import VerticalGradient from '../components/VerticalGradient';
 
 const experiences = [
+//     {
+//         company: "Blue Cross and Blue Shield"
+// ,        duration: "September 2024 - Present",
+//         role: "Software Engineering-Intern",
+//         responsibilities: [
+//             "Build and maintain scalable full-stack applications using Spring Boot and React.js to optimize healthcare claim workflows. ",
+//             "Design and integrate secure RESTful APIs, ensuring seamless data exchange and HIPAA compliance.",
+//             "Enhance frontend usability with React, Material UI, and responsive design principles. ",
+//             "Apply Java design patterns and best practices to deliver clean, maintainable backend code. ",
+//             "Leveraged AWS services such as EC2, S3, SQS, and CloudWatch to efficiently deploy and manage applications"
+//         ]
+//     },
+    
     {
-        company: "Blue Cross and Blue Shield"
-,        duration: "September 2024 - Present",
-        role: "Software Engineering-Intern",
-        responsibilities: [
-            "Build and maintain scalable full-stack applications using Spring Boot and React.js to optimize healthcare claim workflows. ",
-            "Design and integrate secure RESTful APIs, ensuring seamless data exchange and HIPAA compliance.",
-            "Enhance frontend usability with React, Material UI, and responsive design principles. ",
-            "Apply Java design patterns and best practices to deliver clean, maintainable backend code. ",
-            "Leveraged AWS services such as EC2, S3, SQS, and CloudWatch to efficiently deploy and manage applications"
-        ]
-    }, {
         company: "OpenText Technologies",
         duration: "August 2021 – July 2023",
         role: "Associate Software Engineer ",
