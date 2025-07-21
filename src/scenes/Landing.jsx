@@ -59,9 +59,11 @@ const Landing = ({ setSelectedPage }) => {
 
           <p className="mt-10 mb-7 text-sm text-center md:text-start">
           Hi there! 👋
-          Welcome to my portfolio, I'm a passionate Full Stack Developer with over 2 years of experience as an Associate Software Engineer.
-          I have expertise in technologies like Java, Spring Boot, React, Selenium and AWS.
-          Currently pursuing my Master's in Computer Science at the University of Central Missouri.
+          Welcome to my portfolio, I'm a Full Stack Developer with 2+ years of experience building scalable applications using Java, Spring Boot, React, and AWS following clean code principles and system design best practices.
+
+I’ve worked on distributed systems in enterprise environments, freelanced on-demand websites for professionals and students, and sharpened my problem-solving skills through LeetCode.
+
+A Computer Science graduate from the University of Central Missouri, I’m quick to adapt, love solving real-world challenges, and always eager to build something impactful.
           Want to know more about me? Feel free to reach out by clicking the button below.
           </p>
         </motion.div>

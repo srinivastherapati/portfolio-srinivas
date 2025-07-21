@@ -104,9 +104,9 @@ const MySkills = () => {
           </div>
           <p className="mt-5">
           <ul className="list-disc ml-5 ">
-              <li>Java, SpringBoot,Spring Data JPA,Node.js,Express.js</li>
+              <li>Java, SpringBoot,Spring JPA,JSP,Python,Node.js</li>
               <li>REST APIs,Microservices</li>
-              <li>CRON jobs,Thymeleaf</li>
+              <li>Kafka, Elastic Search,</li>
             </ul>
           </p>
         </motion.div>
@@ -161,9 +161,9 @@ const MySkills = () => {
           </div>
           <p className="mt-5">
           <ul className="list-disc ml-5 ">
-              <li>Selenium, JUnit, Mockito (Testing Frameworks)</li>
-              <li>GitHub, CI/CD, Docker, Kubernetes (Version Control & DevOps)</li>
-                 <li>Jira, OAuth2 </li>
+              <li>Selenium, JUnit, Mockito</li>
+              <li>GitHub, CI/CD, Docker, Kubernetes</li>
+                 <li>JWT, OAuth2 </li>
             </ul>
           </p>
         </motion.div>
